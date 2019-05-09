@@ -20,7 +20,7 @@ function createWindow() {
     win.loadFile('index.html')
 
     // Open the DevTools.
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -56,16 +56,29 @@ app.on('activate', () => {
 
 // find images
 ipcMain.on("find", (event, args) => {
-    var filelist = []
     var dir = args.path;
-    walkSync(dir)
+    var result = true,
+        files,
+        message;
+    try { 
+        files = walkSync(dir, []);
+    } catch(e) {
+        files = [];
+        result = false;
+        message = e.message;
+    }    
 
-    console.log(filelist)
+    // send data to client
+    event.returnValue = {
+        "files": files,
+        "result": result,
+        "message": message
+    };
 });
 
+// find files 
 const walkSync = (dir, filelist = []) => {
     fs.readdirSync(dir).forEach(file => {
-
         filelist = fs.statSync(path.join(dir, file)).isDirectory()
             ? walkSync(path.join(dir, file), filelist)
             : filelist.concat(path.join(dir, file));

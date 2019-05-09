@@ -17,7 +17,7 @@
         </div>
 
         <!-- input image folder path -->
-        <div class="row  align-items-center">
+        <div class="row align-items-center">
             <div class="input-group mb-3">
                 <input type="text" class="form-control path" placeholder="put image folder path"
                     aria-describedby="search">
@@ -28,7 +28,20 @@
         </div>
 
         <!-- list -->
+        <div class="row">
+            <!-- files -->
+            <div class="col-6">
+                <div class="list-group filelist">
+                </div>
+            </div>
 
+            <!-- preview image -->
+            <div class="col-6">
+                <div class="image">
+
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
@@ -46,22 +59,25 @@
             document.addEventListener('DOMContentLoaded', fn);
         }
     }
-    
+
     var $ = document.querySelector.bind(document);
     var Finder = require("./finder.js")
     ready(function () {
 
-        var e1;
-        Finder.set();
+        Finder.set('.filelist');
 
-        $("#search").addEventListener("click", e1 = function() {
+        // search
+        $("#search").addEventListener("click", function () {
             Finder.get();
         })
+        $("input").addEventListener("keyup", function (e) {
+            if (e.keyCode === 13) 
+                Finder.get();
+        });
 
-        e1.bind($("#search"))();
-        
+
+
     });
-
 </script>
 
 </html>

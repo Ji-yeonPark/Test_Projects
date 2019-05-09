@@ -1,5 +1,26 @@
+html,
+body {
+    height: 100%;
+}
+
 div.header {
     border-bottom: 1px solid gray;
     text-align: center;
     margin: 10px;
+}
+
+
+div.col-6 {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 75vh;
+}
+
+.container .row:last-child .col-6:last-child {
+    display: table;
+}
+
+.image {
+    display: table-cell; 
+    vertical-align: middle;
 }
