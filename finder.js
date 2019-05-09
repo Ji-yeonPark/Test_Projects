@@ -29,6 +29,11 @@
 
     // show preview image
     var show = (el) => {
+
+        if ($('.list-group-item.active')) 
+            $('.list-group-item.active').classList.remove("active");
+        el.classList.add("active");
+
         /* Create Element
           <img src="" class="img-fluid rounded" alt="">
         */
