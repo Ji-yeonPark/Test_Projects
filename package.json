@@ -1,0 +1,53 @@
+{
+  "name": "imageloader",
+  "version": "1.0.0",
+  "description": "imageloader test javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "build -dir",
+    "dist": "build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ji-yeonPark/TestProjects.git"
+  },
+  "author": "jiyeonpark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ji-yeonPark/TestProjects/issues"
+  },
+  "homepage": "https://github.com/Ji-yeonPark/TestProjects#readme",
+  "dependencies": {
+    "boostrap": "^2.0.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "electron": "^4.1.4"
+  },
+  "build": {
+    "asar": true,
+    "appId": "com.imageloader",
+    "productName": "ImageLoader",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "./picture.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "installerIcon": "picture.ico",
+      "createDesktopShortcut": true
+    }
+  }
+}
