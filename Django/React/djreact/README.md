@@ -6,15 +6,17 @@
 - [YouTube](https://www.youtube.com/watch?v=uZgRbnIsgrA)
 - [blog - django projects in visual studio code](https://automationpanda.com/2018/02/08/)
 - [create-react-app](https://github.com/facebook/create-react-app)
-> npm init react-app gui
+  > npm init react-app gui
 - [ant design](https://ant.design/)
-> npm install antd --save
+  > npm install antd --save
 
-> npm install axios --save
+- axios
+  > npm install axios --save
 
+- [django-rest-framework](https://www.django-rest-framework.org/)
 - [django-cors-headers](https://github.com/ottoyiu/django-cors-headers)
 
-- > npm install react-router-dom --save
+   > npm install react-router-dom --save
 
 - **django-rest-framwork**
   - ListAPIView : read-only. Get만 사용 가능 즉, <form> POST사용 불가 collection of model instances.
@@ -46,3 +48,20 @@ RetrieveAPIView 방식으로 특정 PK 갖는 요소로 접근할 경우 해당 
 2.
 
 React에서 Create/Update/Delete 기능 구현.
+
+<br/>
+
+### Chapter 03. Authenticate Users with React and Django
+
+sign up / login / logout 구현
+
+- [YouTube](https://www.youtube.com/watch?v=BxzO2M7QcZw)
+- redux
+  > npm install --save react-redux<br/>
+  > npm install --save redux redux-thunk
+
+- [react redux chrome extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related)  - [github](https://github.com/zalmoxisus/redux-devtools-extension)
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+- [rest auth registration](https://django-rest-auth.readthedocs.io/en/latest/installation.html)
+- django-allauth
+  > pip install django-allauth
