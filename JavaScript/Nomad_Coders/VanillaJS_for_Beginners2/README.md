@@ -3,14 +3,14 @@
 
 **TODO.** 
 
-Make titny Game (with Canvas)
+Make tiny Game (with Canvas)
 
 <br/>
 
 **About.**
 
 Painting Board made with VanillaJS.
-
+- [Lecture - NomadCoder](https://academy.nomadcoders.co/p/vanilla-js-part-two-kr)
 
 <br/>
 
