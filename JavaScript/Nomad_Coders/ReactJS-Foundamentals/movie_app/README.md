@@ -92,3 +92,84 @@ MoviePoster.propTypes = {
 }
 ```
 
+## FETCH
+
+- URL의 데이터를 불러옴
+- ajax는 url을 자바스크립트로 asynchronous비동기화 방법으로 불러옴.
+- AJAX를 쓰는 이유? 뭔가를 불러올 떼 새로고침을 하지 않고서 자바스크립트와 같이 데이터를 다룰 수 있다. 
+- `fetch` 작업이 (성공하든말든) 끝나면 `then`을 실행헤라. <br/>
+   만약, 에러가 발생하면 `catch`를 실행한다.
+```javascript
+fetch('')
+.then(
+    response => console.log(response)
+)
+.catch(err => console.log(err))
+```
+- `fetch`의 결과인 `then` 함수는 항상 Object형식의 1개의 attribute만 준다.
+- 참고로 `화살표 표시(=>, arrow function)`는 return이 내장되어 있기 떄문에 return을 따로 작성할 필요가 없다.
+
+## Promise
+
+- 최신 자바스크립트 컨셉임
+- asynchronous programming 동기
+- 앞선 작업이 끝나든 말든 다음 작업을 진행.
+- `fetch ... then ... catch`
+
+
+## Await / Async
+
+- `async`은 이전 라인의 작업이 끝날떄까지 기다리지 않고 순서와 상관없이 진행된다.
+- `await`는 이전 작업이 기능이 끝나는 것을 기다린다.(성공 여부와 상관없이)
+- id를 사용하는 이유는 컴포넌트의 key는 인덱스를 사용하면 느리기 때문이다.
+- `componentDidMount`에 많은 코드를 가지고 있는 것은 좋지 않기 때문에(콜백지옥에 빠질수도 있음) 함수별로 정리한 후 넣는 것이 기능별로 넣을 수 있고 수정도 용이하다.
+
+## lines-ellipsis
+
+```
+$ yarn add react-lines-ellipsis
+```
+
+## gh-pages
+
+- 깃허브에 프로젝트로 올린 프론트엔드 파일들을 무료로 호스팅해줌. (백엔드X)
+- 깃허브는 코드를 보여줄 뿐 실행하진 않기 때문.
+- 단, 브랜치가 있어야하며, 해당 브랜치 이름은 `gh-pages`이야만 한다.
+- 프로젝트명, 유저명과 함께 웹사이트에 보여짐
+
+방법
+1. 아래 셋 중 한가지 명령어 이용해서 css 압축하여 `build`폴더에 넣음.
+- `build`하면 좀 더 최적화되고, 압축, 더 향상된다.
+```
+$ yarn run start
+$ yarn build
+$ npm start 
+```
+
+2. `package.json`에 `key`추가
+> 형식 : http://[깃허브유저명].github.io/[프로젝트명] <br/>
+> "homepage" : "http://myname.github.io/myapp",
+
+
+3. 파일을 수정했으므로 다시 `build`.
+
+4. 브랜치 추가
+```
+$ yarn add --dev gh-pages
+```
+
+5. `package.json`에 스크립트(`scripts`) 추가
+```
+// ...
+"scripts": {
+    // ...
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+}
+```
+
+
+6. `deploy` 실행
+```
+$ yarn run deploy
+```
