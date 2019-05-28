@@ -19,7 +19,10 @@
         v-focus
       >
     </div>
-    <div class="remove-item" @click="removeTodo(index)">&times;</div>
+    <div>
+      <button @click="pluralize">Plural</button>
+      <span class="remove-item" @click="removeTodo(index)">&times;</span>
+    </div>
   </div>
 </template>
 
@@ -42,16 +45,22 @@ export default {
   },
   data() {
     return {
-      'id': this.todo.id,
-      'title': this.todo.title,
-      'completed': this.todo.completed,
-      'editing': this.todo.editing,
-      'beforeEditCache': ""
+      id: this.todo.id,
+      title: this.todo.title,
+      completed: this.todo.completed,
+      editing: this.todo.editing,
+      beforeEditCache: ""
     };
+  },
+  created() {
+    eventBus.$on('pluralize', this.handlePluralize)
+  },
+  beforeDestroy() {
+    eventBus.$off('pluralize', this.handlePluralize)
   },
   watch: {
     checkAll() {
-      this.completed = this.checkAll ? true : this.todo.completed
+      this.completed = this.checkAll ? true : this.todo.completed;
     }
   },
   directives: {
@@ -63,18 +72,18 @@ export default {
   },
   methods: {
     removeTodo(index) {
-      this.$emit("removedTodo", index);
+      eventBus.$emit("removedTodo", index);
     },
     editTodo() {
       this.beforeEditCache = this.title;
       this.editing = true;
     },
     doneEdit() {
-      if (this.title.trim() == '') {
+      if (this.title.trim() == "") {
         this.title = this.beforeEditCache;
       }
       this.editing = false;
-      this.$emit("finishedEdit", {
+      eventBus.$emit("finishedEdit", {
         index: this.index,
         todo: {
           id: this.id,
@@ -87,6 +96,21 @@ export default {
     cancelEdit() {
       this.editing = false;
       this.title = this.beforeEditCache;
+    },
+    pluralize() {
+      eventBus.$emit('pluralize');
+    },
+    handlePluralize() {
+      this.title = this.title + 's';
+      eventBus.$emit("finishedEdit", {
+        index: this.index,
+        todo: {
+          id: this.id,
+          title: this.title,
+          completed: this.completed,
+          eiditing: this.editing
+        }
+      });
     }
   }
 };

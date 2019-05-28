@@ -22,3 +22,10 @@
 
 ## Part 3. [Vue.js Todo App - Event Bus - Part 3](https://www.youtube.com/watch?v=7AXiN5mrOgY&list=PLEhEHUEU3x5q-xB1On4CsLPts0-rZ9oos&index=3)
 
+- TodoList 에서 EventBus를 이용해서 TodoCheckAll, TodoClearCompleted, TodoFiltered, TodoItemsRemaining을 분리 후 이벤트 연결
+
+<br/>
+
+## Part 4. [Vue.js Todo App - Vuex - Part 4](https://www.youtube.com/watch?v=yrCGcnn4_RU&list=PLEhEHUEU3x5q-xB1On4CsLPts0-rZ9oos&index=4)
+
+
