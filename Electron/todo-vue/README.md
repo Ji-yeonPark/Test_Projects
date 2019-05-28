@@ -28,4 +28,15 @@
 
 ## Part 4. [Vue.js Todo App - Vuex - Part 4](https://www.youtube.com/watch?v=yrCGcnn4_RU&list=PLEhEHUEU3x5q-xB1On4CsLPts0-rZ9oos&index=4)
 
+- **Vuex** : 중앙 집중식 저장소 역할
+
+1) install
+  > $ npm i vuex --save
+
+<br/>
+
+## Part 5. [Vue.js Todo App - Laravel API - Part 5](https://www.youtube.com/watch?v=Ork8274eqYo)
+
+
+
 
