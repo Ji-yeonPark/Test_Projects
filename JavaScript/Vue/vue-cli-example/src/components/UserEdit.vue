@@ -10,11 +10,12 @@
       <v-radio label="반려견 없음" :value="false"></v-radio>
     </v-radio-group>
     <v-btn @click="changeUser">수정 완료</v-btn>
-    
   </div>
 </template>
 
 <script>
+import { eventBus } from "../main";
+
 export default {
   props: ["name", "address", "phone", "hasDog"],
   data() {
@@ -30,8 +31,10 @@ export default {
   },
   methods: {
     changeUser() {
-      console.log(this.user)
-      this.$emit('child', this.user)
+      // console.log(this.user)
+      this.$emit("child", this.user);
+      // eventBus.$emit("userWasEdited", new Date())
+      eventBus.userWasEdited(new Date());
     }
   }
 };

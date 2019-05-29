@@ -153,12 +153,143 @@ export default {
 </UserEdit>
 ```
 
-<br/>
-<br/>
-<br/>
+### # Event Bus
+
+**형제 컴포넌트 간의 값 전달**방식
+
+* 사용 방법
+1) main.js 에서 eventBus선언<br/>
+ex)
+```javascript
+// 방식 1
+export const eventBus = new Vue()
+
+// 방식 2. 객체안에 method를 이용하면 eventBus를 매번 선언하지 않아도 된다
+export const eventBus = new Vue({  
+  methods: {
+    userWasEdited(date) {
+      this.$emit('userWasEdited', date)
+    }
+  }
+})
+```
+
+2) `형제1`에서 `eventBus` 불러와서 `methods`에서 사용.<br/>
+
+> 방식 1: eventBus.$emit('신호명', 전달값)<br/>
+> 방식 2: eventBus.함수명(전달값)<br/>
+
+ex)
+```javascript
+import { eventBus } from "../main";
+export default {
+  ...
+  methods: {
+    changeUser() {
+      ...
+      // 방식 1로 선언한 경우
+      eventBus.$emit("userWasEdited", new Date())
+      // 방식 2로 선언한 경우
+      eventBus.userWasEdited(new Date());
+    }
+  }
+};
+```
+
+3) `형제2`에서도 `eventBus` 선언 후 값을 전달받기 위해 `data` 생성.<br/>
+그리고 나서 `created()`에서 `eventBus`에서 `$on`으로 신호를 받는다.<br/>
+
+> eventBus.$on('신호명', callback)
+
+ex)
+```javascript
+import { eventBus } from "../main";
+
+export default {
+  data () {
+    return {
+      editedDate : null
+    }
+  },
+  created() {
+    eventBus.$on('userWasEdited', (date) => {
+      this.editedDate = date
+    })
+  },
+  ...
+}
+
+```
 
 
 
+
+
+
+### # Mixin
+
+**공통 함수(methods)를 하나로** 묶은 것. mixin<br/>
+* 사용 예시
+
+```javascript
+// src/mixins/mixin.js
+export const mixin = {
+  methods: {
+    getMixin() {
+      return "!!!!"
+    }
+  }
+}
+
+// src/components/User.vue
+import { mixin } from "../mixins/mixin";
+export default {
+  methods: {
+    getMixin() {
+      return "****"  // 우선시 된다.
+    }
+  }
+  mixins: [mixin]
+}
+```
+* mixin으로 선언한 파일은 Vue인스턴스와 같이 computed, data 등 선언이 가능하다.
+* 만약, mixin과 자기 자신 컴포넌트 내 함수명이 동일할 경우, 자신의 컴포넌트 내 함수가 우선시 된다.<br/>
+  믹스인이 먼저 실행되고, 자기 자신의 컴포넌트가 실행되기 때문이다.
+
+
+```javascript
+// src/mixins/mixin.js
+export const mixin = {
+  methods: {
+    getMixin() {
+      console.log("믹스인")
+      return "!!!!"
+    }
+  }
+}
+
+// src/components/User.vue
+import { mixin } from "../mixins/mixin";
+export default {
+  created() {
+    console.log("자기 자신 컴포넌트")
+  },
+  methods: {
+    getMixin() {
+      return "****"  // 우선시 된다.
+    }
+  }
+  mixins: [mixin]
+}
+
+// -- 결과
+// 믹스인
+// 자기 자신 컴포넌트
+```
+
+<br/>
+<br/>
+<br/>
 
 
 ---
