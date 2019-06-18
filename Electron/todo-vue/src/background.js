@@ -6,6 +6,7 @@ import {
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib'
 const isDevelopment = process.env.NODE_ENV !== 'production'
+const mysql = require('mysql')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -81,3 +82,12 @@ if (isDevelopment) {
     })
   }
 }
+
+const connection = mysql.createConnection({
+  host     : '127.0.0.1',
+  user     : 'root',
+  password : '1234',
+  database : 'todo_electron',
+  // port: '8889'
+});
+connection.connect();

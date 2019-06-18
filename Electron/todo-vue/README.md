@@ -37,6 +37,23 @@
 
 ## Part 5. [Vue.js Todo App - Laravel API - Part 5](https://www.youtube.com/watch?v=Ork8274eqYo)
 
+1) install
+  의존성 관리를 위해 **컴포저**를 통해 laravel 설치한다.
+  - 컴포저 설치 : https://getcomposer.org
+  - laravel 설치 : 
+    > $ composer global require laravel/installer
+
+2) 프로젝트 생성
+    > $ laravel new todo-laravel<br/>
+    > $ cd todo-laravel<br/>
+    * controller, model, factory, migration 생성.
+    > $ php artisan make:model Todo -a
+
+### Electron + MySql
+1) install
+  https://www.npmjs.com/package/mysql
+  > $ npm install mysql --save
+
 
 
 
