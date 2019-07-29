@@ -2,7 +2,7 @@
 
 [leetcode](https://leetcode.com/problems/product-of-array-except-self/) (2019.07.04)
 
-![image](https://user-images.githubusercontent.com/40231980/60407529-21a17400-9bf6-11e9-8924-020c5ae1e804.png)
+![image](https://user-images.githubusercontent.com/40231980/62016961-c2805080-b1ef-11e9-92b1-72215a55e68c.png)
 
 ### # 문제
 
