@@ -1,21 +1,14 @@
-# :book: Leetcode
+# Max Increase to Keep City Skyline
 
-[https://leetcode.com/problemset/all/](https://leetcode.com/problemset/all/)
+[leetcode](https://leetcode.com/problems/top-k-frequent-words/) (2019.09.27)
 
+![image](https://user-images.githubusercontent.com/40231980/60785247-30a39b80-a18d-11e9-8cf7-10969aeddcf7.png)
 
-### :+1: 중요 문제
+### # 문제
 
-- [70. Climbing Stairs](https://github.com/Ji-yeonPark/TIL/tree/master/Python/algorithm/leetcode/70.%20Climbing%20Stairs)
-  - Brute Force
-  - Recursion with Memoization
-  - Dynamic Programming
-  - Fibonacci Number
-  - Binets Method(비네 방정식)
-- [75. Sort Colors](https://github.com/Ji-yeonPark/TIL/tree/master/Python/algorithm/leetcode/75.%20Sort%20Colors)
-  - 버블 정렬
-  - 삽입 정렬
-  
-### :-1: 해결 못한 문제
+`words`에서 가장 빈도수가 많은 글자 `K`만큼 뽑아내기.
+단, 빈도수가 같은 경우, 알파벳 수가 작은 걸 먼저 선택한다.
 
-- [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) (2019.08.12)
-  - Time Limit Exceeded
+### # 해결
+
+- collections.Counter로 빈도수 계산 후 정렬
